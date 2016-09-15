@@ -1,5 +1,8 @@
+"use strict";
+
 const express = require('express');
 const bodyParser = require('body-parser');
+const routes = require('./routes');
 const { connect } = require('./database');
 
 const app = express();
@@ -10,9 +13,7 @@ app.set('view engine', 'pug');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// app.get('/', (req, res) => {
-//   res.send('HELLO WORLD');
-// });
+app.use(routes);
 
 connect()
   .then(() => {
