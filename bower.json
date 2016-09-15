@@ -1,0 +1,21 @@
+{
+  "name": "mockreddit",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Tim Creasy <timcreasy@me.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/timcreasy/MockReddit",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

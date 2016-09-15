@@ -1,0 +1,9 @@
+extends includes/layout.pug
+
+block content
+  each story in stories
+    div
+      p=story.title
+      p=story.image
+      p=story.url
+      p=story.upvotes
