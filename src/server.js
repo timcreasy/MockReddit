@@ -12,9 +12,17 @@ app.set('view engine', 'pug');
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json())
 
 app.use(routes);
+
+app.use((req, res) => {
+  res.render('404');
+});
+
+app.use((error, req, res, next) => {
+  res.sendStatus(500);
+  console.log(error);
+});
 
 connect()
   .then(() => {

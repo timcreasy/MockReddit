@@ -1,0 +1,16 @@
+extends includes/layout.pug
+
+block content
+  .container
+    h1 Create New Post
+    form(method="post")
+      .form-group
+        label(for="post-title") Title
+        input#post-title.form-control(type="text", name="title", placeholder="Enter a new title")
+      .form-group
+        label(for="post-image") Image
+        input#post-image.form-control(type="text", name="image", placeholder="Enter a post image URL")
+      .form-group
+        label(for="post-url") URL
+        input#post-url.form-control(type="text", name="url", placeholder="Enter a post URL")
+      button.btn.btn-primary(type="submit") Submit
