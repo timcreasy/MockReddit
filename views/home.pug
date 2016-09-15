@@ -17,5 +17,9 @@ block content
             span=story.upvotes
           div.story--div.col-sm-2
             img(src=story.image)
-          .title.col-sm-8
+          .title.col-sm-7
             a(href=story.url) #{story.title}
+    .col-sm-1
+      - var commentsLink = "/comments/" + story._id;
+      a(href=commentsLink)
+        button Comment

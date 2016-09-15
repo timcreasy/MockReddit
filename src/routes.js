@@ -17,7 +17,8 @@ router.param('storyID', function (req, res, next, storyID) {
   next();
 });
 
-router.post('/upvote/:storyID', (req, res) => {
+
+router.post('/upvote/:storyID', (req, res, next) => {
 
     Story
       .find({ "_id": req.params.storyID })
@@ -27,11 +28,14 @@ router.post('/upvote/:storyID', (req, res) => {
             .then(() => {
               res.redirect('/');
             })
+      })
+      .catch((err) => {
+        next(err);
       });
 
 });
 
-router.post('/downvote/:storyID', (req, res) => {
+router.post('/downvote/:storyID', (req, res, next) => {
 
     Story
       .find({ "_id": req.params.storyID })
@@ -41,20 +45,37 @@ router.post('/downvote/:storyID', (req, res) => {
             .then(() => {
               res.redirect('/');
             })
+      })
+      .catch((err) => {
+        next(err);
       });
 
 });
 
-router.get('/new', (req, res) => {
+router.get('/new', (req, res, next) => {
   res.render('new');
+  next(err);
 });
 
-router.post('/new', (req, res) => {
+router.post('/new', (req, res, next) => {
   Story
     .create(req.body)
     .then(() => {
       res.redirect('/');
-    })
+    }).catch((err) => {
+      next(err);
+    });
+});
+
+router.get('/comments/:storyID', (req, res, next) => {
+  Story
+      .find({ "_id": req.params.storyID })
+      .then((story) => {
+        res.render('comment', { story: story[0] })
+      })
+      .catch((err) => {
+        next(err);
+      })
 });
 
 
