@@ -45,5 +45,17 @@ router.post('/downvote/:storyID', (req, res) => {
 
 });
 
+router.get('/new', (req, res) => {
+  res.render('new');
+});
+
+router.post('/new', (req, res) => {
+  Story
+    .create(req.body)
+    .then(() => {
+      res.redirect('/');
+    })
+});
+
 
 module.exports = router;
