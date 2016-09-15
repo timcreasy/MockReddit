@@ -2,16 +2,19 @@ extends includes/layout.pug
 
 block content
   each story in stories
-    .story.row
-      .col-sm-12
-        .votebutton.col-sm-1
-          a(href='/vote')
-          span.glyphicon.glyphicon-chevron-up(aria-hidden=true)
-          a(href='/vote')
-          span.glyphicon.glyphicon-chevron-down(aria-hidden=true)
-        .upvote.col-sm-1
-          span=story.upvotes
-        div.story--div.col-sm-2
-          img(src=story.image)
-        .title.col-sm-8
-          a(href=story.url) #{story.title}
+    form(method="post")
+      .story.row
+        .col-sm-12
+          .votebutton.col-sm-1
+            .form-group
+              - var postLink = "/upvote/" + story._id;
+              button(formaction=postLink, type="submit")
+                span.glyphicon.glyphicon-chevron-up(aria-hidden=true)
+              a(href='/downvote/#{story._id}')
+                span.glyphicon.glyphicon-chevron-down(aria-hidden=true)
+          .upvote.col-sm-1
+            span=story.upvotes
+          div.story--div.col-sm-2
+            img(src=story.image)
+          .title.col-sm-8
+            a(href=story.url) #{story.title}
