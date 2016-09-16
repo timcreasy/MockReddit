@@ -71,7 +71,7 @@ router.get('/comments/:storyID', (req, res, next) => {
   Story
       .find({ "_id": req.params.storyID })
       .then((story) => {
-        res.render('comment', { story: story[0] })
+        res.render('comment', { story: story[0], comments: story[0].comments })
       })
       .catch((err) => {
         next(err);
@@ -85,9 +85,9 @@ router.post('/comments/:storyID', (req, res, next) => {
       let pageToRender = `/comments/${req.params.storyID}`;
       res.redirect(pageToRender);
     })
-    .catch((err) => {
-      next(err);
-    })
+    // .catch((err) => {
+    //   next(err);
+    // })
 });
 
 

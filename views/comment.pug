@@ -5,8 +5,14 @@ block content
   p=story.title
   img(src=story.image)
   p=story.upvotes
+  if comments.length > 0
+    each comment in comments
+      p=comment.author
+      p=comment.comment
+  else
+    h4 Be the first to comment
   .container
-    h1 Add New Commnet
+    h1 Add New Comment
     form(method="post")
       .form-group
         label(for="comment-author") Your Name:
