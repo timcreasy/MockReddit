@@ -78,5 +78,17 @@ router.get('/comments/:storyID', (req, res, next) => {
       })
 });
 
+router.post('/comments/:storyID', (req, res, next) => {
+  Story
+    .update({ "_id": req.params.storyID }, {$push: {"comments": {author: req.body.author, comment: req.body.comment}}})
+    .then((comment) => {
+      let pageToRender = `/comments/${req.params.storyID}`;
+      res.redirect(pageToRender);
+    })
+    .catch((err) => {
+      next(err);
+    })
+});
+
 
 module.exports = router;

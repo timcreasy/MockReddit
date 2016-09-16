@@ -5,3 +5,13 @@ block content
   p=story.title
   img(src=story.image)
   p=story.upvotes
+  .container
+    h1 Add New Commnet
+    form(method="post")
+      .form-group
+        label(for="comment-author") Your Name:
+        input#comment-author.form-control(type="text", name="author", placeholder="Enter your name")
+      .form-group
+        label(for="comment") Comment
+        input#comment.form-control(type="text", name="comment", placeholder="Enter your comment")
+      button.btn.btn-primary(type="submit") Submit
