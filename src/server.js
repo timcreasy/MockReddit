@@ -7,6 +7,9 @@ const { connect } = require('./database');
 
 const app = express();
 
+const port = process.env.PORT || 3000
+app.set('port', port)
+
 app.set('views', 'views');
 app.set('view engine', 'pug');
 
@@ -26,7 +29,7 @@ app.use((error, req, res, next) => {
 
 connect()
   .then(() => {
-    app.listen(3000, () => {
-      console.log("Listening on port 3000...");
+    app.listen(port, () => {
+      console.log(`Listening on port ${port}`);
     });
   });
