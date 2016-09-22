@@ -14,9 +14,7 @@ block content
   .container
     h1 Add New Comment
     form(method="post")
-      .form-group
-        label(for="comment-author") Your Name:
-        input#comment-author.form-control(type="text", name="author", placeholder="Enter your name")
+      p Author: #{user}
       .form-group
         label(for="comment") Comment
         input#comment.form-control(type="text", name="comment", placeholder="Enter your comment")

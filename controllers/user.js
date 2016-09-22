@@ -1,7 +1,14 @@
+const User = require('../models/user');
+
 module.exports.new = (req, res) => {
   res.render('register');
 };
 
-module.exports.create = (req, res) => {
-  res.redirect('/login');
+module.exports.create = (req, res, next) => {
+  User
+    .create({email: req.body.email, password: req.body.password})
+    .then((user) => {
+      res.redirect('/login');
+    })
+    .catch((err) => next(err));
 };

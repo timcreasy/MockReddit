@@ -15,7 +15,7 @@ module.exports.new = (req, res, next) => {
 
 module.exports.create = (req, res, next) => {
   Story
-    .update({ "_id": req.params.storyID }, {$push: {"comments": {author: req.body.author, comment: req.body.comment}}})
+    .update({ "_id": req.params.storyID }, {$push: {"comments": {author: req.user.email, comment: req.body.comment}}})
     .then((comment) => {
       let pageToRender = `/comments/${req.params.storyID}`;
       res.redirect(pageToRender);
