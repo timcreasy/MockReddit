@@ -18,10 +18,15 @@ app.use(session({
   store: new RedisStore(),
   secret: 'mysupersecretkey'
 }));
+
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use((req, res, next) => {
+  app.locals.user = req.user ? req.user.email : null;
+  next();
+});
 app.use(require('../routes/'));
 
 app.use((req, res) => {
