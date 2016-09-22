@@ -1,0 +1,13 @@
+extends includes/layout.pug
+
+block content
+  .container
+    h1 Login
+    form(method="post")
+      .form-group
+        label(for="email") Email:
+        input#email.form-control(type="email", name="email", placeholder="E.g. john@example.com")
+      .form-group
+        label(for="password") Password
+        input#password.form-control(type="password", name="password", placeholder="***************")
+      button.btn.btn-primary(type="submit") Login

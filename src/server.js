@@ -2,8 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const routes = require('./routes');
-const { connect } = require('./database');
+const { connect } = require('../database/database');
 
 const app = express();
 
@@ -16,7 +15,7 @@ app.set('view engine', 'pug');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(routes);
+app.use(require('../routes/'));
 
 app.use((req, res) => {
   res.render('404');
